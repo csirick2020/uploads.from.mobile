@@ -1,0 +1,38 @@
+When a developer links an external CSS file in the `<head>` section of an HTML page and then tries to execute internal or inline CSS further down in the same HTML page, the cascading nature of CSS rules comes into play. This is where the "Cascading" in Cascading Style Sheets comes from.
+
+Here's what tends to happen:
+
+1. **Order of Priority**:
+   - External CSS: CSS defined in an external file has the lowest specificity and is applied globally to the entire page.
+   - Internal CSS: CSS defined in the `<style>` element within the HTML's `<head>` section has a higher specificity and can override external styles for elements targeted by the internal CSS rules.
+   - Inline CSS: Inline styles (styles applied directly to individual HTML elements) have the highest specificity and can override both external and internal styles for the specific element.
+
+2. **Specificity and Importance**: If there's a conflict between different CSS rules (external vs. internal vs. inline) targeting the same element, the more specific and important rule takes precedence. Inline styles are the most specific and important, followed by internal styles, and then external styles.
+
+3. **Cascading Rule**: If there's no conflict, external and internal styles will cascade together. For example, an element targeted by both external and internal styles will have its styles determined by the combination of these rules.
+
+Here's an example:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="external.css">
+  <style>
+    p {
+      color: blue; /* Internal CSS */
+    }
+  </style>
+</head>
+<body>
+  <p style="color: red;">This is a paragraph.</p> <!-- Inline CSS -->
+</body>
+</html>
+```
+
+In this case:
+- The text color of the `<p>` element will be red because the inline style is the most specific and takes precedence.
+- If there were no inline style, the text color would be blue, as defined by the internal CSS in the `<style>` element.
+- External CSS rules will apply to all elements not specifically overridden by internal or inline styles.
+
+This cascading behavior allows developers to control the styling of their web pages effectively and gives them flexibility in applying styles globally and locally.
