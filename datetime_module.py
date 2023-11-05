@@ -26,7 +26,7 @@ print(tday - tdelta)
 # timedelta = date1 + date2
 
 # How long until X event occurs?
-bday = datetime.date(2024, 6, 23)
+bday = datetime.date(2024, 10, 20)
 until_bday = bday - tday  # until_bday is a timedelta
 print(until_bday)  # prints days, min, sec, micro
 print(until_bday.days)  # prints only days
